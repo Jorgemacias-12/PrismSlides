@@ -1,22 +1,32 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+interface Props {
+  title: string;
+  description: string;
+}
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+const { title, description } = Astro.props;
+
+import { appendBaseUrl } from "@/utils/index";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content={appendBaseUrl("/og-image.jpg")} />
+    <meta property="og:description" content={description} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content={title} />
+    <meta name="twitter:image" content={appendBaseUrl("/og-image.jpg")} />
+    <meta property="twitter:description" content={description} />
+  </head>
+  <body> </body>
+</html>
