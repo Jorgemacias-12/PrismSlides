@@ -28,5 +28,7 @@ import { appendBaseUrl } from "@/utils/index";
     <meta name="twitter:image" content={appendBaseUrl("/og-image.jpg")} />
     <meta property="twitter:description" content={description} />
   </head>
-  <body> </body>
+  <body>
+    <slot />
+  </body>
 </html>
